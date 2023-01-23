@@ -50,8 +50,10 @@ function checkAnswer() {
 
     if (isCorrect) {
         alert("Hey! you got it right! :D");
+        incrementScore();
     } else {
         alert (`oh noes! You answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
+        incrementWrongAnswer();
     }
 
     runGame(calculatedAnswer[1]);
@@ -75,12 +77,24 @@ function calculateCorrectAnswer() {
     }
 }
 
-function incrementScore() {
 
+/**
+ * Gets currect score from the DOM and increments it by 1
+ * you can use innertext or textcontent
+ * the ++ needs to come before the variable
+ */
+function incrementScore() {
+    let oldScore = parseInt(document.getElementById("score").innerText);
+    document.getElementById("score").innerText = ++oldScore;
 }
 
-function incrementWrongAnswer() {
 
+/**
+ * Gets current incorrect score from DOM and increments it by 1
+ */
+function incrementWrongAnswer() {
+    let oldScore = parseInt(document.getElementById("incorrect").innerText);
+    document.getElementById("incorrect").innerText = ++oldScore;
 }
 
 function displayAdditionQuestion(operand1, operand2) {
